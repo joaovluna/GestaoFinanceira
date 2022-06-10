@@ -3,22 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".activity.SplashActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/splash_imageView_pig"
         android:layout_width="596dp"
         android:layout_height="592dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.377"
+        app:layout_constraintVertical_bias="0.374"
         app:srcCompat="@drawable/savemoney_foreground" />
 
     <TextView
-        android:id="@+id/index_textView_savemoney"
+        android:id="@+id/splash_textView_savemoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="casual"
@@ -33,14 +34,15 @@
         app:layout_constraintVertical_bias="0.112" />
 
     <TextView
-        android:id="@+id/index_textView_createdby"
+        android:id="@+id/splash_textView_createdBy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:fontFamily="sans-serif-light"
-        android:text="Created by joaovluna - 2022.1"
+        android:text="Created by joaovluna - GitHub"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/splash_imageView_pig"
         app:layout_constraintVertical_bias="0.781" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,8 @@
-package mobile.unifor.cct.savemoney
+package mobile.unifor.cct.savemoney.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import mobile.unifor.cct.savemoney.R
 
 class MainActivity : AppCompatActivity() {
     
