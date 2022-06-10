@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import mobile.unifor.cct.savemoney.R
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
@@ -55,10 +57,24 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
         isFormFilled = isPasswordConfirmationFilled(passwordConfirmation) && isFormFilled
 
         if(isFormFilled){
-//            Toast.makeText(this, "Formulário Preenchido", Toast.LENGTH_SHORT).show()
             if(password == passwordConfirmation) {
 
                 // TODO: Criar uma instância de usuário e salvar no banco -> FireBase
+
+                GlobalScope.launch {
+                    // TODO: Inserindo no Room -> Vamos inserir no Firebase.
+                    val userDAO = DatabaseUtil.getInstance(applicationContext).getUserDAO()
+                    userDAO.insert(user)
+
+
+                }
+
+                Toast.makeText(
+                    applicationContext,
+                    "Usuario $name inserido com sucesso!",
+                    Toast.LENGTH_SHORT
+                ).show()
+                finish()
 
             } else {
                 mRegisterPasswordConfirmation.error = "Senhas incompatíveis"
