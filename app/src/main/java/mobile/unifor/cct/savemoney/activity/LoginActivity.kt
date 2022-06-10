@@ -63,33 +63,33 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
         val handler = Handler(Looper.myLooper()!!)
         if(isFormFilled) {
-            GlobalScope.launch {
-                val userDAO = DatabaseUtil.getInstance(applicationContext).getUserDAO()
-                val user = userDAO.findByEmail(email)
-
-                if(user != null) {
-                    if(user.password == password) {
-                        val it = Intent(applicationContext, MainActivity::class.java)
-                        startActivity(it)
-                        finish()
-                    } else {
-                        handler.post {
-                            mLoginEmail.text.clear()
-                            mLoginPassword.text.clear()
-                            showDialog("Usuário ou senha inválido")
-
-                        }
-
-                    }
-                } else {
-                    handler.post {
-                        mLoginEmail.text.clear()
-                        mLoginPassword.text.clear()
-                        showDialog("Usuário ou senha inválido")
-
-                    }
-                }
-            }
+//            GlobalScope.launch {
+//                val userDAO = DatabaseUtil.getInstance(applicationContext).getUserDAO()
+//                val user = userDAO.findByEmail(email)
+//
+//                if(user != null) {
+//                    if(user.password == password) {
+//                        val it = Intent(applicationContext, MainActivity::class.java)
+//                        startActivity(it)
+//                        finish()
+//                    } else {
+//                        handler.post {
+//                            mLoginEmail.text.clear()
+//                            mLoginPassword.text.clear()
+//                            showDialog("Usuário ou senha inválido")
+//
+//                        }
+//
+//                    }
+//                } else {
+//                    handler.post {
+//                        mLoginEmail.text.clear()
+//                        mLoginPassword.text.clear()
+//                        showDialog("Usuário ou senha inválido")
+//
+//                    }
+//                }
+//            }
         }
 
     }

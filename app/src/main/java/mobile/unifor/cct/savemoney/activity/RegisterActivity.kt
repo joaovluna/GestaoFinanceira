@@ -63,8 +63,8 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
                 GlobalScope.launch {
                     // TODO: Inserindo no Room -> Vamos inserir no Firebase.
-                    val userDAO = DatabaseUtil.getInstance(applicationContext).getUserDAO()
-                    userDAO.insert(user)
+//                    val userDAO = DatabaseUtil.getInstance(applicationContext).getUserDAO()
+//                    userDAO.insert(user)
 
 
                 }
