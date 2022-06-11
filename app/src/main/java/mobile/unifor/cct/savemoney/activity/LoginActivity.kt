@@ -11,6 +11,9 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import mobile.unifor.cct.savemoney.R
@@ -22,9 +25,13 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var mLoginEmail: EditText
     private lateinit var mLoginPassword: EditText
 
+    private lateinit var mAuth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        mAuth = Firebase.auth
 
         mLoginPassword = findViewById(R.id.login_editText_password)
         mLoginEmail = findViewById(R.id.login_editText_email)
@@ -47,8 +54,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun confirmLogin() {
-        val email = mLoginEmail.toString()
-        val password = mLoginPassword.toString()
+        val email = mLoginEmail.text.toString().trim()
+        val password = mLoginPassword.text.toString()
 
         var isFormFilled = true
 
@@ -56,58 +63,40 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             mLoginEmail.error = "Campo Obrigatório!"
             isFormFilled = false
         }
-        if(password.isBlank()) {
+        if (password.isBlank()) {
             mLoginPassword.error = "Campo Obrigatório!"
             isFormFilled = false
         }
 
-        val handler = Handler(Looper.myLooper()!!)
-        if(isFormFilled) {
-//            GlobalScope.launch {
-//                val userDAO = DatabaseUtil.getInstance(applicationContext).getUserDAO()
-//                val user = userDAO.findByEmail(email)
-//
-//                if(user != null) {
-//                    if(user.password == password) {
-//                        val it = Intent(applicationContext, MainActivity::class.java)
-//                        startActivity(it)
-//                        finish()
-//                    } else {
-//                        handler.post {
-//                            mLoginEmail.text.clear()
-//                            mLoginPassword.text.clear()
-//                            showDialog("Usuário ou senha inválido")
-//
-//                        }
-//
-//                    }
-//                } else {
-//                    handler.post {
-//                        mLoginEmail.text.clear()
-//                        mLoginPassword.text.clear()
-//                        showDialog("Usuário ou senha inválido")
-//
-//                    }
-//                }
-//            }
+
+        if (isFormFilled) {
+            // TODO: REALIZAR LOGIN!
+            mAuth
+                .signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val it = Intent(this, MainActivity::class.java)
+                        startActivity(it)
+                        finish()
+                    } else {
+                        showDialogMessage("Ocorreu um erro, tente novamente")
+                    }
+
+                }
+
         }
-
-    }
-    private fun showDialog(message: String) {
-
-            val dialog = AlertDialog.Builder(this@LoginActivity)
-                .setTitle("Save Money")
-                .setMessage(message)
-                .setCancelable(false)
-                .setPositiveButton("Ok") { dialog, _ ->
-                    dialog.dismiss()
-
-                }.create()
-            dialog.show()
-
-
     }
 
+    private fun showDialogMessage(message: String) {
+        val dialog = AlertDialog.Builder(this@LoginActivity)
+            .setTitle("Save Money")
+            .setMessage(message)
+            .setCancelable(false)
+            .setPositiveButton("Ok") { dialog, _ ->
+                dialog.dismiss()
 
+            }.create()
+        dialog.show()
+    }
 
 }

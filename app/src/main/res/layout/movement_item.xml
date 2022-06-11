@@ -10,7 +10,7 @@
         android:layout_height="match_parent">
 
         <View
-            android:id="@+id/view"
+            android:id="@+id/movement_item_indicator"
             android:layout_width="20dp"
             android:layout_height="100dp"
             android:background="#4CAF50"
@@ -30,7 +30,7 @@
             android:text="Nome"
             android:textColor="#000000"
             android:textSize="20sp"
-            app:layout_constraintStart_toEndOf="@+id/view"
+            app:layout_constraintStart_toEndOf="@+id/movement_item_indicator"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView

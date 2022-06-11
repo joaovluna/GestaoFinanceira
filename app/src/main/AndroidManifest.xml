@@ -14,7 +14,7 @@
         android:theme="@style/Theme.SaveMoney"
         tools:targetApi="31">
         <activity
-            android:name=".FinanceActivity"
+            android:name=".activity.FinanceActivity"
             android:exported="false" />
         <activity
             android:name=".activity.RegisterActivity"

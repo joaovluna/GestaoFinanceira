@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "600945635450",
+    "firebase_url": "https://savemoney-e0a62-default-rtdb.firebaseio.com",
+    "project_id": "savemoney-e0a62",
+    "storage_bucket": "savemoney-e0a62.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600945635450:android:a1b3621a80a32841af8bc3",
+        "android_client_info": {
+          "package_name": "mobile.unifor.cct.savemoney"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "600945635450-8fm6i5nf2gmnaqmgole38sq0gv2f1kh5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDovLhrXRd52jJP3k7UdlTmOWx0ZTQJg2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "600945635450-8fm6i5nf2gmnaqmgole38sq0gv2f1kh5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
