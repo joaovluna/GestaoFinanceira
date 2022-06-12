@@ -70,18 +70,21 @@
         >
 
         <RadioButton
-            android:id="@+id/finance_radioButton1"
+            android:id="@+id/finance_radioButton_lucre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="false"
+            android:onClick="onRadioButtonClicked"
+            android:text="Receita" />
+
+        <RadioButton
+            android:id="@+id/finance_radioButton_loss"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="true"
-            android:text="Receita" />
-
-        <RadioButton
-            android:id="@+id/finance_radioButton2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:onClick="onRadioButtonClicked"
             android:text="Despesa" />
     </RadioGroup>
 

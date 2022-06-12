@@ -70,7 +70,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
 
         if (isFormFilled) {
-            // TODO: REALIZAR LOGIN!
             mAuth
                 .signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
@@ -79,10 +78,12 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                         startActivity(it)
                         finish()
                     } else {
-                        showDialogMessage("Ocorreu um erro, tente novamente")
+                        showDialogMessage("Usuário ou senha incorretos, tente novamente")
+                        //apresenta qnd tem erro de comunicacao ou o usuario nao existe, ou o usuario erra login
                     }
 
                 }
+
 
         }
     }

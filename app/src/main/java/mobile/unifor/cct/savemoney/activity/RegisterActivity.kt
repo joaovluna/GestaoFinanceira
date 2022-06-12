@@ -69,7 +69,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
         if (isFormFilled) {
             if (password == passwordConfirmation) {
-                // todo: realizar cadastro novo usuario
+                // realizar cadastro novo usuario
                 val userRef = mDatabase.getReference("/users")
                 val key = userRef.push().key ?: ""
 

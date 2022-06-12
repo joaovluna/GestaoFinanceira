@@ -43,15 +43,15 @@ class FinanceAdapter(var finances: List<Finance>): RecyclerView.Adapter<FinanceA
 
     override fun onBindViewHolder(holder: FinanceViewHolder, position: Int) {
 
-        // TODO: FAZER A ENTITY FINANCE COM AS INFORMACOES NAME, VALUE & Income -> vai verificar qual RadioButton esta ativo e setar como true ou false.
+        // TODO:  -> vai verificar qual RadioButton esta ativo e setar como true ou false.
 
-//        holder.name.text = finances[position].name
-//
-//        if(finances[position].isIncome) {
-//            holder.indicator.setBackgroundColor(Color.GREEN)
-//        } else {
-//            holder.indicator.setBackgroundColor(Color.RED)
-//        }
+        holder.name.text = finances[position].name
+        holder.value.text = finances[position].value
+        if(finances[position].movement) {
+            holder.indicator.setBackgroundColor(Color.GREEN)
+        } else {
+            holder.indicator.setBackgroundColor(Color.RED)
+        }
 
     }
 
