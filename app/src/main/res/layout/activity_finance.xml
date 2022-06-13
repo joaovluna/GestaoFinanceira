@@ -74,6 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:buttonTint="#00FF00"
             android:checked="false"
             android:onClick="onRadioButtonClicked"
             android:text="Receita" />
@@ -83,6 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:buttonTint="#FF0000"
             android:checked="true"
             android:onClick="onRadioButtonClicked"
             android:text="Despesa" />

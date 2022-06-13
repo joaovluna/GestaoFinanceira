@@ -7,5 +7,5 @@ data class Finance(
     val name: String = "",
     val value: String = "",
     val description: String = "",
-    val movement: Boolean = false // TODO: true para Receita, false para Despesa
+    val movement: Boolean = false
 )

@@ -1,12 +1,10 @@
 package mobile.unifor.cct.savemoney.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -21,6 +19,7 @@ import com.google.firebase.ktx.Firebase
 import mobile.unifor.cct.savemoney.R
 import mobile.unifor.cct.savemoney.adapter.FinanceAdapter
 import mobile.unifor.cct.savemoney.adapter.FinanceItemListener
+import mobile.unifor.cct.savemoney.entity.Finance
 import mobile.unifor.cct.savemoney.entity.User
 
 class MainActivity : AppCompatActivity(), FinanceItemListener {
@@ -64,12 +63,15 @@ class MainActivity : AppCompatActivity(), FinanceItemListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val user = snapshot.children.first().getValue(User:: class.java)
                     mUserKey = user?.id ?: ""
-                    mFinanceAdapter = FinanceAdapter(user?.finances?.values?.toList()!!)
+                    mFinanceAdapter = FinanceAdapter(user?.finances?.values?.toList()!!) //certo
+
+//                    mFinanceAdapter = FinanceAdapter(orderByMovement(user?.finances?.values?.toList()!!))
                     mFinanceAdapter.setOnFinanceItemListener(this@MainActivity)
 
                     mMainFinanceList.adapter = mFinanceAdapter
-                }
 
+                }
+//todo: partition para organizar sempre por receita / despesa
                 override fun onCancelled(error: DatabaseError) {
                 }
             })
@@ -98,8 +100,9 @@ class MainActivity : AppCompatActivity(), FinanceItemListener {
                     .child(mUserKey)
                     .child("/finances")
                     .child(finance.id)
-                financeRef.removeValue()
 
+                mFinanceAdapter.notifyItemRemoved(position)
+                financeRef.removeValue()
                 dialog.dismiss()
             }
             .setNegativeButton("Não") { dialog, _ ->
@@ -110,5 +113,26 @@ class MainActivity : AppCompatActivity(), FinanceItemListener {
         dialog.show()
     }
 
+
+    fun orderByMovement(list: List<Finance>): List<Finance> {
+        var list2: MutableList<Finance> = mutableListOf()
+        var j = 0
+        var k = list.size - 1
+        for(i in 0 until list.size) {
+            if(j == k) {
+
+                break
+            } else {
+                if(list[i].movement) {
+                    list2[j] = list[i]
+                    j++
+                } else {
+                    list2[k] = list[i]
+                    k--
+                }
+            }
+        }
+        return list2
+    }
 
 }

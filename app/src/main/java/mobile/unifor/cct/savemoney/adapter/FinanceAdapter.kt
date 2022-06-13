@@ -43,7 +43,6 @@ class FinanceAdapter(var finances: List<Finance>): RecyclerView.Adapter<FinanceA
 
     override fun onBindViewHolder(holder: FinanceViewHolder, position: Int) {
 
-        // TODO:  -> vai verificar qual RadioButton esta ativo e setar como true ou false.
 
         holder.name.text = finances[position].name
         holder.value.text = finances[position].value
